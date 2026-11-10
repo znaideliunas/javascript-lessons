@@ -1,97 +1,67 @@
 <!DOCTYPE html>
-<html lang="lt">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Warehouse</title>
-
+    <title>Vanilla JavaScript and LocalStorage CRUD project</title>
     <script src="script.js" defer></script>
 </head>
 <body>
+    <h1>Vanilla JavaScript and LocalStorage CRUD project</h1>
 
-    <h1>Warehouse System</h1>
-    <section>
-        <h2>Product Warehouse</h2>
+    <main class="layout">
+        <section class="left">
+            <form id="warehouseForm">
+                <label for="productId">Product Code</label>
+                <input type="text" id="productId" list="idList" inputmode="numeric" placeholder="only numbers...">
+                <datalist id="idList"></datalist>
 
-        <form id="warehouseForm">
+                <label for="productName">Product Name</label>
+                <input type="text" id="productName">
 
-            <label for="productId">Product code (ID):</label>
-            <input type="text" id="productId" placeholder="Here goes your ID...">
+                <label for="productQuantity">Product Quantity</label>
+                <input type="number" id="productQuantity">
 
-            <label for="productName">Pavadinimas:</label>
-            <input type="text" id="productName" placeholder="Enter thy Name...">
+                <div class="buttons">
+                    <button type="button" id="addProduct">Insert new</button>
+                    <button type="button" id="editProduct">Edit item</button>
+                    <button type="button" id="deleteProduct">Delete from LS</button>
+                </div>
+            </form>
 
-            <label for="productQuantity">Quantity:</label>
-            <input type="number" id="productQuantity" placeholder="Enter quantity..">
+            <p id="warehouseMessage" class="message"></p>
 
-            <button type="button" id="addProduct">Add Product</button>
-            <button type="button" id="searchProduct">Search Product</button>
-            <button type="button" id="editProduct">Edit Product</button>
-            <button type="button" id="deleteProduct">Delete Product</button>
+            <p id="warehouseEmpty" class="empty">No products in the warehouse yet.</p>
+            <div class="table-wrap" id="warehouseTableBox" hidden>
+                <table>
+                    <thead><tr><th>Product Code</th><th>Product Name</th><th>Product Quantity</th></tr></thead>
+                    <tbody id="warehouseTable"></tbody>
+                </table>
+            </div>
+        </section>
 
-        </form>
+        <section class="right">
+            <h2>Find Product by Code</h2>
 
-        <p id="warehouseMessage">hiiii</p>
+            <form id="findForm">
+                <label for="findId">Product Code</label>
+                <input type="text" id="findId" list="idList" inputmode="numeric" placeholder="only numbers...">
 
-        <h3>Warehouse Products:</h3>
+                <div class="buttons center">
+                    <button type="button" id="findProduct">Select from LS</button>
+                </div>
+            </form>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Pavadinimas</th>
-                    <th>Kiekis</th>
-                    <th>Veiksmai</th>
-                </tr>
-            </thead>
+            <p id="findMessage" class="message"></p>
 
-            <tbody id="warehouseTable">
-
-            </tbody>
-        </table>
-
-    </section>
-
-
-
-    <section>
-        <h2>Product Cart</h2>
-
-        <form id="cartForm">
-
-            <label for="cartProductId">Product code (ID):</label>
-            <input type="text" id="cartProductId" placeholder="Enter product ID">
-
-            <br><br>
-
-            <label for="cartQuantity">Quantity:</label>
-            <input type="number" id="cartQuantity" placeholder="Enter quantity">
-
-            <br><br>
-
-            <button type="button" id="addToCart">Enter to add to your cart!</button>
-
-        </form>
-
-        <p id="cartMessage"></p>
-
-        <h3>Your cart:</h3>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Quantity</th>
-                </tr>
-            </thead>
-
-            <tbody id="cartTable">
-
-            </tbody>
-        </table>
-
-    </section>
-
+            <p id="foundEmpty" class="empty">No products selected yet.</p>
+            <div class="table-wrap" id="foundTableBox" hidden>
+                <table>
+                    <thead><tr><th>Product Code</th><th>Product Name</th><th>Product Quantity</th></tr></thead>
+                    <tbody id="foundTable"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
